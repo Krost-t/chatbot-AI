@@ -1,18 +1,14 @@
 @import "tailwindcss";
 
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 
 @theme {
   --font-poppins: Poppins, sans-serif;
 
-  --color-darkblack: #121212;
-  --color-jetgray: #343434;
-  --color-white: #E1E1E1;
+  --color-dark-black: #121212;
+  --color-jet-gray: #343434;
+  --color-jet-black: #1E1E1F;
+  --color-sortOf-white: #FAFAFA;
+
   --color-rose: #CF6679;
   --color-purple: #BB86FC;
   --color-blue: #018786;
