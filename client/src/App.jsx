@@ -11,7 +11,7 @@ export default function App() {
   <BrowserRouter>
    <Routes>
     <Route path="/" element={<Home />} />
-    <Route path="/auth" element={<Auth />} />
+    <Route path="/auth:mode" element={<Auth />} />
     <Route path="/chat" element={<Chatbot />} />
    </Routes>
   </BrowserRouter>
