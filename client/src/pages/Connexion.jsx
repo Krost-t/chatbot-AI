@@ -1,13 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function Connexion() {
-    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: "",
         password: ""
     });
-    const [error, setError] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -15,36 +12,20 @@ export default function Connexion() {
             ...prev,
             [name]: value
         }));
-        setError(""); // Réinitialiser l'erreur quand l'utilisateur modifie le formulaire
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
-
         try {
             // TODO: Implémenter la logique de connexion avec l'API
             console.log("Tentative de connexion avec:", formData);
-            
-            // Simuler une connexion réussie
-            // À remplacer par votre logique d'API
-            if (formData.email && formData.password) {
-                navigate("/chat");
-            }
         } catch (error) {
-            setError("Erreur de connexion. Veuillez vérifier vos identifiants.");
             console.error("Erreur de connexion:", error);
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className="w-full space-y-6">
-            {error && (
-                <div className="bg-red-500/10 border border-red-500 text-red-500 px-4 py-2 rounded-lg text-sm">
-                    {error}
-                </div>
-            )}
-            
             <div className="space-y-4">
                 <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-300">
@@ -87,4 +68,4 @@ export default function Connexion() {
             </button>
         </form>
     );
-} 
+}

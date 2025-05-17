@@ -6,16 +6,16 @@ export default function Header({ navItems }) {
     const toggleMenu = () => setIsOpen((prev) => !prev);
 
     return (
-        <header className="h-32 w-screen bg-dark-black flex p-6 items-center justify-between text-sortOf-white text-base font-poppins border-b border-b-rose overflow-hidden">
+        <header className="h-32 w-screen bg-gradient-to-r from-gray-900 via-purple-900 to-gray-900 flex p-6 items-center justify-between text-white text-base font-poppins shadow-lg">
             {/* Logo/Home Link */}
-            <Link to="/" className="cursor-pointer">
+            <Link to="/" className="cursor-pointer hover:scale-110 transition-transform duration-300">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-8">
+                    className="size-8 text-purple-300 hover:text-white transition-colors">
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -32,7 +32,7 @@ export default function Header({ navItems }) {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="size-8 cursor-pointer lg:hidden">
+                className="size-8 cursor-pointer lg:hidden text-purple-300 hover:text-white transition-colors">
                 <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -42,24 +42,42 @@ export default function Header({ navItems }) {
 
             {/* Navigation Links */}
             <nav className={`
-          ${isOpen ? "block" : "hidden"}        
-          absolute inset-0 bg-dark-black flex flex-col items-center justify-around
-          lg:static lg:flex lg:flex-row lg:items-center lg:justify-around lg:bg-transparent
-           `}>
+                ${isOpen ? "block" : "hidden"}        
+                absolute inset-0 bg-gradient-to-b from-gray-900 via-purple-900 to-gray-900 flex flex-col items-center justify-around
+                lg:static lg:flex lg:flex-row lg:items-center lg:justify-around lg:bg-transparent
+            `}>
+                <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    strokeWidth={1.5} 
+                    stroke="currentColor" 
+                    className="size-14 cursor-pointer lg:hidden absolute top-12 right-24 text-purple-300 hover:text-white transition-colors" 
+                    onClick={toggleMenu}
+                >    
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
 
-           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-14 cursor-pointer lg:hidden absolute top-12 right-24" onClick={toggleMenu}>    
-           <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                <Link
+                    to="/auth/connexion"
+                    className="text-4xl rounded-xl h-18 w-80 bg-gradient-to-r from-purple-600 to-purple-700 
+                    hover:from-purple-500 hover:to-purple-600 grid place-items-center text-white transition-all duration-300
+                    shadow-lg hover:shadow-purple-500/25 transform hover:scale-105
+                    lg:bg-gradient-to-r lg:from-purple-600 lg:to-purple-700 lg:h-12 lg:w-40 lg:text-base lg:rounded-lg
+                    lg:hover:from-purple-500 lg:hover:to-purple-600"
+                >
+                    Connexion
+                </Link>
 
-                {navItems.map(({ to, label }) => (
-                    <NavLink
-                        key={to}
-                        to={to}
-                        end
-                        className="
-                         text-4xl rounded-xl  h-18 w-80  bg-purple grid place-items-center text-white lg:bg-transparent lg:h-10 lg:w-48 lg:text-base lg:rounded-lg ">
-                        {label}
-                    </NavLink>
-                ))}
+                <Link
+                    to="/auth/inscription"
+                    className="text-4xl rounded-xl h-18 w-80 bg-transparent border-2 border-purple-500
+                    hover:bg-purple-500/10 grid place-items-center text-white transition-all duration-300
+                    shadow-lg hover:shadow-purple-500/25 transform hover:scale-105
+                    lg:h-12 lg:w-40 lg:text-base lg:rounded-lg"
+                >
+                    Inscription
+                </Link>
             </nav>
         </header>
     );
